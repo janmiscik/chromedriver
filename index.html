@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>Kalkulačka</title>
+</head>
+<body>
+    <h1>Kalkulačka</h1>
+    <form method="post" onsubmit="vypocitej(); return false;">
+        <label for="cislo1">Číslo 1:</label>
+        <input type="number" id="cislo1" name="cislo1" required>
+
+        <label for="cislo2">Číslo 2:</label>
+        <input type="number" id="cislo2" name="cislo2" required>
+
+        <label for="operace">Operace:</label>
+        <select id="operace" name="operace">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+        </select>
+
+        <input type="submit" value="Spočítat">
+    </form>
+
+    <h2>Výsledek: <span id="vysledek"></span></h2>
+
+    <script>
+        function vypocitej() {
+            const a = parseFloat(document.getElementById('cislo1').value);
+            const b = parseFloat(document.getElementById('cislo2').value);
+            const op = document.getElementById('operace').value;
+            let result;
+
+            switch (op) {
+                case '+': result = a + b; break;
+                case '-': result = a - b; break;
+                case '*': result = a * b; break;
+                case '/': result = b !== 0 ? a / b : 'NaN'; break;
+                default: result = 'NaN';
+            }
+
+            document.getElementById('vysledek').textContent = result;
+        }
+    </script>
+</body>
+</html>
